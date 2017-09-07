@@ -1,0 +1,30 @@
+<div *ngIf="!isFilmEditMode">
+    <button class="btn" (click)="addNewFilm()">Add a new movie</button>
+</div>
+<div *ngIf="isFilmEditMode">
+    <button class="btn" (click)="saveFilm()">Save movie</button>
+</div>
+<div *ngIf="!isFilmEditMode">
+    <table class="table equalColumns">
+        <thead>
+            <tr>
+                <th width="15%">Title</th>
+                <th width="5%">Genre</th>
+                <th width="30%">Poster</th>
+                <th width="50%">Add Review</th>
+            </tr>
+        </thead>
+        <tbody film [film]="m" [showReviews]="false" *ngFor="let m of movies"></tbody>
+    </table>
+</div>
+<div *ngIf="isFilmEditMode">
+    <label>Movie Title</label>
+    <input type="text" [(ngModel)]="title">
+    <label>Movie Genre</label>
+    <select [(ngModel)]="selectedGenre">
+        <option *ngFor="let g of genres" [ngValue]="g">{{g.name}}</option>
+    </select>
+
+    <input type="file" (change)="fileLoad($event)"><br>
+    <img *ngIf="artImage" [src]="artImage" alt="Image preview...">
+</div>

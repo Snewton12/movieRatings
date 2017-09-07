@@ -1,0 +1,24 @@
+<tr>
+    <td>{{film.title}}</td>
+    <td>{{film.genre.name}}</td>
+    <td><img [src]="imagePath"></td>
+    <td *ngIf="showReviews">
+        <div *ngFor="let r of film.reviews">
+            <review [review]="r"></review>
+        </div>
+    </td>
+    <td *ngIf="!showReviews">
+        <button class="btn" *ngIf="!isReviewEditMode" (click)="addNewReview(film.title)">Add review for this movie</button>
+        <button class="btn" *ngIf="isReviewEditMode" (click)="saveReview()">Save review</button>
+        <div *ngIf="isReviewEditMode">
+            <div>
+                <label>Rating</label>
+                <input type="number" [(ngModel)]="reviewToAdd.rating">
+                <label>Review Comments</label>
+                <textarea [(ngModel)]="reviewToAdd.review"></textarea>
+                <label>Name of reviewer</label>
+                <input type="text" [(ngModel)]="reviewToAdd.reviewerName">
+            </div>
+        </div>
+    </td>
+</tr>

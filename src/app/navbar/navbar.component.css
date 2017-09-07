@@ -1,0 +1,32 @@
+.navbar {
+    background-color: red;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    padding-left: 20px;
+}
+.navbar img {
+    height: 50px;
+    float: left;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.navbar li {
+    float: left;
+    list-style-type: none;
+}
+
+.navbar li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.navbar li a:hover {
+    background-color: green;
+}

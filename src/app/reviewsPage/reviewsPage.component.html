@@ -1,0 +1,13 @@
+<div>
+    <table class="table equalColumns" width="100%">
+        <thead>
+            <tr>
+                <th width="15%">Title</th>
+                <th width="5%">Genre</th>
+                <th width="30%">Poster</th>
+                <th width="50%">Reviews</th>
+            </tr>
+        </thead>
+        <tbody film [film]="m" [showReviews]="true" *ngFor="let m of movies"></tbody>
+    </table>
+</div>
