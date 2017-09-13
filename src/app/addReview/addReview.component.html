@@ -8,8 +8,8 @@
     <table class="table equalColumns">
         <thead>
             <tr>
-                <th width="15%">Title</th>
-                <th width="5%">Genre</th>
+                <th class="sortableHeader" (click)="sortList(1)" width="15%">Title</th>
+                <th class="sortableHeader" (click)="sortList(2)" width="5%">Genre</th>
                 <th width="30%">Poster</th>
                 <th width="50%">Add Review</th>
             </tr>
@@ -18,13 +18,18 @@
     </table>
 </div>
 <div *ngIf="isFilmEditMode">
-    <label>Movie Title</label>
-    <input type="text" [(ngModel)]="title">
-    <label>Movie Genre</label>
-    <select [(ngModel)]="selectedGenre">
+    <div class="addFilm">
+        <label>Movie Title</label>
+        <input type="text" [(ngModel)]="title">
+    </div>
+    <div class="addFilm">
+        <label>Movie Genre</label>
+        <select [(ngModel)]="selectedGenre">
         <option *ngFor="let g of genres" [ngValue]="g">{{g.name}}</option>
     </select>
-
-    <input type="file" (change)="fileLoad($event)"><br>
-    <img *ngIf="artImage" [src]="artImage" alt="Image preview...">
+    </div>
+    <div class="addFilm">
+        <input type="file" (change)="fileLoad($event)"><br>
+        <img *ngIf="artImage" [src]="artImage" alt="Image preview...">
+    </div>
 </div>

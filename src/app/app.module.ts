@@ -16,6 +16,7 @@ import { ReviewComponent } from "./review/review.component";
 import { AddReviewComponent } from "./addReview/addReview.component";
 import { FilmListService } from "./filmList/filmList.service";
 import { ReviewsPageComponent } from "./reviewsPage/reviewsPage.component";
+import { FilmListResolver } from './resolvers/filmList.resolver';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBJmvQwh6pApVX0wBX1VBFr26cNU2T63W0",
@@ -46,14 +47,15 @@ export const firebaseConfig = {
     StarRatingModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
-      { path: 'reviews', component: ReviewsPageComponent },
-      { path: 'addReview', component: AddReviewComponent },
+      { path: 'reviews', component: ReviewsPageComponent, resolve: {movies: FilmListResolver} },
+      { path: 'addReview', component: AddReviewComponent, resolve: {movies: FilmListResolver} },
       { path: '', component: HomeComponent },
       { path: '**', component: ErrorComponent }
     ])
   ],
   providers: [
-    FilmListService
+    FilmListService,
+    FilmListResolver
   ],
   bootstrap: [AppComponent]
 })

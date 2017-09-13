@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Genre, Film, Review } from "../interfaces";
 import { FilmListService } from '../filmList/filmList.service';
+import { OnRatingChangeEven } from 'angular-star-rating';
 
 @Component({
     selector: '[film]',
@@ -13,6 +14,7 @@ export class FilmComponent implements OnInit{
     isReviewEditMode: boolean = false;
     reviewToAdd: Review;
     imagePath: string;
+    ratingChangeResult: OnRatingChangeEven
 
     constructor(private filmListService: FilmListService) {
         
@@ -28,7 +30,10 @@ export class FilmComponent implements OnInit{
     }
 
     saveReview() {
-        debugger;
         this.filmListService.saveReview(this.film.title, this.reviewToAdd);
+    }
+
+    ratingChange = ($event:OnRatingChangeEven) => {
+        this.reviewToAdd.rating = $event.rating;
     }
 }

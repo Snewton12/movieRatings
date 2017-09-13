@@ -2,10 +2,10 @@
     <table class="table equalColumns" width="100%">
         <thead>
             <tr>
-                <th width="15%">Title</th>
-                <th width="5%">Genre</th>
+                <th class="sortableHeader" (click)="sortList(1)" width="15%">Title</th>
+                <th class="sortableHeader" (click)="sortList(2)" width="5%">Genre</th>
                 <th width="30%">Poster</th>
-                <th width="50%">Reviews</th>
+                <th class="sortableHeader" (click)="sortList(3)" width="50%">Reviews</th>
             </tr>
         </thead>
         <tbody film [film]="m" [showReviews]="true" *ngFor="let m of movies"></tbody>

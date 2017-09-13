@@ -1,3 +1,9 @@
-<label>Rating</label>
-<span>{{review.rating}}</span>
+<star-rating-comp 
+    [labelText]="review.rating"
+    [starType]="'svg'"
+    [showHalfStars]="true"
+    [hoverEnabled]="true" 
+    [numOfStars]="5" 
+    [rating]="review.rating">
+</star-rating-comp>
 <p>{{review.review}} - {{review.reviewerName}}</p>

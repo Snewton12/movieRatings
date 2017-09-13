@@ -10,6 +10,7 @@ export class Film {
     title: string;
     genre: Genre;
     reviews: Review[];
+    averageRating: number;
 }
 
 export enum Genre {
@@ -17,4 +18,10 @@ export enum Genre {
     Comedy,
     Drama,
     SciFi
+}
+
+export enum SortValue {
+    Title = 1,
+    Genre = 2,
+    AverageRating = 3
 }

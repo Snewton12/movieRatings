@@ -1,6 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-/* .equalColumns th, .equalColumns td
-{
-    width: 25%
-} */
 @import "~angular-star-rating/assets/scss/star-rating";
+
+.sortableHeader:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}

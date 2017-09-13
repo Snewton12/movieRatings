@@ -37,12 +37,11 @@ export class AddReviewComponent implements OnInit {
     }
 
     loadFilms() {
-        let dbRef = firebase.database().ref('movies/');
-        dbRef.once('value')
-            .then((snapshot) => {
-                let tmp: string[] = snapshot.val();
-                this.movies = Object.keys(tmp).map(key => tmp[key])
-            });
+        this.filmListService.loadFilms().subscribe(movies => this.movies = movies);
+    }
+
+    sortList(sortValue: number) {
+        this.filmListService.sortList(sortValue);
     }
 
     addNewFilm() {
@@ -65,7 +64,8 @@ export class AddReviewComponent implements OnInit {
             artImageTitle: this.artImageTitle,
             genre: this.selectedGenre,
             title: this.title,
-            reviews: new Array<Review>()
+            reviews: new Array<Review>(),
+            averageRating: 0
         }
         this.filmListService.saveFilm(film);
     }
